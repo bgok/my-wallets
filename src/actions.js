@@ -1,6 +1,6 @@
 import CoinbasePro from 'coinbase-pro';
 import KrakenClient from 'kraken-api';
-import { CoinbaseProKey, CoinbaseProPassphrase, CoinbaseProSecret, KrakenKey, KrakenSecret } from "../accountsSecrets";
+import { CoinbaseProKey, CoinbaseProPassphrase, CoinbaseProSecret, KrakenKey, KrakenSecret } from "./accountsSecrets";
 
 import { UPDATE_COINBASEPRO_BALANCES, UPDATE_KRAKEN_BALANCES } from "./reducers";
 
@@ -22,7 +22,6 @@ export const fetchKrakenBalances = () => dispatch => {
 
 export const fetchCoinbaseProBalances = () => async dispatch => {
     const response = await coinbaseProClient.getCoinbaseAccounts();
-    console.log(response);
     const data = response
         .filter(({balance}) => parseFloat(balance) !== 0)
         .map(({currency: symbol, balance}) => ({ symbol, balance }))

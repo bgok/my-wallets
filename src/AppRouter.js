@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav, Navbar } from "react-bootstrap";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Link, Route } from "react-router-dom";
 import IndexComponent from "./IndexComponent";
 import TransferComponent from "./TransferComponent";
 
@@ -12,14 +12,14 @@ function AppRouter() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link to="/">Home</Nav.Link>
-                        <Nav.Link to="/transfer">Transfer</Nav.Link>
+                        <Nav.Link as={Link} to="/">Home</Nav.Link>
+                        <Nav.Link as={Link} to="/transfer">Transfer</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
             <div style={{ width: '300px' }}>
                 <Route path="/" exact component={IndexComponent}/>
-                <Route path="/transfer/" component={TransferComponent}/>
+                <Route path="/transfer" component={TransferComponent}/>
             </div>
         </Router>
     );
