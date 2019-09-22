@@ -3,16 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.3.1",
+    "coinbase-pro": "^0.9.0",
+    "electron-is-dev": "^1.1.0",
+    "kraken-api": "https://github.com/nothingisdead/npm-kraken-api.git#795fce455003c2d7245d97beba53dbe38b8f1607",
     "react": "^16.9.0",
+    "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.2"
+    "react-dropdown": "^1.6.4",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.1.2",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "rescripts start",
+    "build": "rescripts build",
+    "test": "rescripts test",
+    "eject": "rescripts eject",
+    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\""
   },
+  "main": "public/electron.js",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -27,5 +39,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@rescripts/cli": "^0.0.12",
+    "@rescripts/rescript-env": "^0.0.10",
+    "concurrently": "^4.1.2",
+    "electron": "^6.0.10",
+    "electron-builder": "^21.2.0",
+    "wait-on": "^3.3.0"
   }
 }
