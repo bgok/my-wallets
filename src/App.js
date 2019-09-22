@@ -13,7 +13,7 @@ const store = createStore(reducer, {}, applyMiddleware(thunk, logger));
 function App() {
     return (
         <Provider store={store}>
-            <div className="App">
+            <div className="App" style={{color: "lightgray"}}>
                 <AppRouter/>
             </div>
         </Provider>

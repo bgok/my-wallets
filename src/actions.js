@@ -20,6 +20,28 @@ export const fetchKrakenBalances = () => dispatch => {
     });
  };
 
+export const getFundingMethods = symbol => dispatch => {
+    const params = {asset: symbol, wtf: 'huh'};
+    console.log(' ....', params)
+    krakenClient.api('DepositMethods', params, (err, {result}) => {
+        if (err) {
+            console.error('e',err)
+        } else {
+            console.log(result)
+        }
+    })
+}
+
+export const getKrakenDestinationAddress = () => dispatch => {
+    krakenClient.api('DepositAddresses', null, (error, {result}) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log(result);
+        }
+    })
+}
+
 export const fetchCoinbaseProBalances = () => async dispatch => {
     const response = await coinbaseProClient.getCoinbaseAccounts();
     const data = response
@@ -28,3 +50,4 @@ export const fetchCoinbaseProBalances = () => async dispatch => {
     dispatch({type: UPDATE_COINBASEPRO_BALANCES, data: data})
 
 }
+

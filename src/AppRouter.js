@@ -7,17 +7,22 @@ import TransferComponent from "./TransferComponent";
 function AppRouter() {
     return (
         <Router>
-            <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home">Price Triangulation</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Nav.Link as={Link} to="/">Home</Nav.Link>
-                        <Nav.Link as={Link} to="/transfer">Transfer</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-            <div style={{ width: '300px' }}>
+            <div style={{ color: "lightgray" }}>
+                <Navbar variant="dark" expand="sm">
+                    <Navbar.Brand href="/">
+                        MyWallets
+                        {/*<img src='./MyWallets.png' width='50' height='50'/>*/}
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="mr-auto">
+                            <Nav.Link as={Link} to="/">Home</Nav.Link>
+                            <Nav.Link as={Link} to="/transfer">Transfer</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
+            </div>
+            <div style={{ width: '500px', margin: "0 auto" }}>
                 <Route path="/" exact component={IndexComponent}/>
                 <Route path="/transfer" component={TransferComponent}/>
             </div>

@@ -6,13 +6,13 @@ class IndexComponent extends Component {
     render = () => {
         const { balances: { kraken, coinbasepro, metamask, keybase, dcent } } = this.props;
         return (
-            <>
+            <div className='container-fluid mt-3'>
                 <WalletBalances name='Kraken' wallet={kraken}/>
                 <WalletBalances name='CoinbasePro' wallet={coinbasepro}/>
                 <WalletBalances name='Metamask' wallet={metamask}/>
                 <WalletBalances name='Keybase' wallet={keybase}/>
                 <WalletBalances name="D'Cent" wallet={dcent}/>
-            </>
+            </div>
         );
     };
 
@@ -24,10 +24,12 @@ class IndexComponent extends Component {
 }
 
 const WalletBalances = ({ name, wallet }) => (
-    <>
-        <h2>{name} Balances</h2>
-        {wallet && wallet.map((b, i) => <div key={i}>{b.symbol}: {b.balance}</div>)}
-    </>
+    <div className='row mb-3 pb-3 border-bottom'>
+        <div className='col-6 text-left'>{name} Balances</div>
+        <div className='col-6 text-right'>
+        {wallet && wallet.map((b, i) => <div key={i}>{b.balance} {b.symbol}</div>)}
+        </div>
+    </div>
 );
 
 export default connect(

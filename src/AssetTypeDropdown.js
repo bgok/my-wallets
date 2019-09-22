@@ -4,10 +4,20 @@ import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 import { connect } from "react-redux";
 
-class ExchangeDropdown extends Component {
+const AssetTypes = [
+    'Bitcoin (BTC)',
+    'Ethereum (ETH)',
+    'Bitcoin Cash (BCH)',
+    'Mana (MANA)',
+    'DAI (DAI)',
+    'Stellar (XLM)',
+    'Ripple (XRP)',
+];
+
+class AssetTypeDropdown extends Component {
   render = () => {
-      const {balances, value, onChange} = this.props;
-      const options = Object.keys(balances).map((k, i) => ({value: i, label: capitalize(k)}))
+      const {value, onChange} = this.props;
+      const options = AssetTypes.map((k, i) => ({value: i, label: capitalize(k)}))
       return (
           <Dropdown options={options} onChange={onChange} value={value} placeholder="Select an account"/>
       );
@@ -16,4 +26,4 @@ class ExchangeDropdown extends Component {
 
 export default connect(
     ({ balances }) => ({ balances })
-)(ExchangeDropdown);
+)(AssetTypeDropdown);
