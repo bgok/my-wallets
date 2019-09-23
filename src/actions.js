@@ -10,10 +10,11 @@ const coinbaseProClient = new CoinbasePro.AuthenticatedClient(
 );
 
 export const fetchKrakenBalances = () => dispatch => {
-    krakenClient.api('Balance', null, (error, {result}) => {
-        if (error) {
+    krakenClient.api('Balance', null, (error, response) => {
+        if (error || !response) {
             console.error(error);
         } else {
+            const {result} = response;
             const data = Object.keys(result).map((k) => ({symbol: k, balance: result[k]}));
             dispatch({type: UPDATE_KRAKEN_BALANCES, data: data})
         }
