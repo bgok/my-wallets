@@ -1,8 +1,8 @@
 import React from 'react';
 import { Nav, Navbar } from "react-bootstrap";
 import { HashRouter as Router, Link, Route } from "react-router-dom";
-import IndexComponent from "./IndexComponent";
-import TransferComponent from "./TransferComponent";
+import IndexComponent from "../pages/IndexComponent";
+import TransferComponent from "../pages/TransferComponent";
 
 function AppRouter() {
     return (

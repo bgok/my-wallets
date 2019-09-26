@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { fetchCoinbaseProBalances, fetchKrakenBalances } from "./actions";
+import { fetchCoinbaseProBalances } from "../../actions/CoinbaseproActions";
+import { fetchKrakenBalances } from "../../actions/KrakenActions";
 
 class IndexComponent extends Component {
     render = () => {
@@ -27,7 +28,7 @@ const WalletBalances = ({ name, wallet }) => (
     <div className='row mb-3 pb-3 border-bottom'>
         <div className='col-6 text-left'>{name} Balances</div>
         <div className='col-6 text-right'>
-        {wallet && wallet.map((b, i) => <div key={i}>{b.balance} {b.symbol}</div>)}
+            {wallet && wallet.map((b, i) => <div key={i}>{b.balance} {b.symbol}</div>)}
         </div>
     </div>
 );

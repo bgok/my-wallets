@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import { Button, Form, FormControl, FormGroup, FormLabel } from "react-bootstrap";
 import { connect } from "react-redux";
-import { getFundingMethods, getKrakenDestinationAddress } from "./actions";
-import AssetTypeDropdown from "./AssetTypeDropdown";
-import ExchangeDropdown from "./ExchangeDropdown";
+import { getFundingMethods, getKrakenDestinationAddress } from "../../actions/KrakenActions";
+import AssetTypeDropdown from "../common/AssetTypeDropdown";
+import ExchangeDropdown from "../common/ExchangeDropdown";
 
-const TransferComponent = ({getKrakenDestinationAddress}) => {
+const TransferComponent = ({ getKrakenDestinationAddress }) => {
     const [sourceAccount, setSourceAccount] = useState();
     const [destAccount, setDestAccount] = useState();
     const [amount, setAmount] = useState(0);
     const [assetType, setAssetType] = useState(0);
-    console.log({sourceAccount, destAccount, amount, assetType});
+    console.log({ sourceAccount, destAccount, amount, assetType });
     return (
         <div className='container-fluid text-left form-dark'>
             <h1>Transfer Funds</h1>
             <Form className="form" style={{ width: '300px' }}
-                  onSubmit={submitTransfer({sourceAccount, destAccount, amount})}>
+                  onSubmit={submitTransfer({ sourceAccount, destAccount, amount })}>
                 <FormGroup>
                     <FormLabel>Asset</FormLabel>
                     <AssetTypeDropdown value={assetType} onChange={setAssetType}/>
@@ -43,7 +43,7 @@ const TransferComponent = ({getKrakenDestinationAddress}) => {
 }
 
 const submitTransfer = props => e => {
-    const {getKrakenDestinationAddress} = props;
+    const { getKrakenDestinationAddress } = props;
     e.preventDefault();
 
     getFundingMethods('ETH')
@@ -51,11 +51,11 @@ const submitTransfer = props => e => {
     console.log('submitted:', props)
 }
 
-const setFromE = setter => ({target: {value}}) => setter(value);
+const setFromE = setter => ({ target: { value } }) => setter(value);
 
 export default connect(
     null,
     dispatch => ({
-            getKrakenDestinationAddress: dispatch(getKrakenDestinationAddress())
-        })
+        getKrakenDestinationAddress: dispatch(getKrakenDestinationAddress()),
+    }),
 )(TransferComponent);
